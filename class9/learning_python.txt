@@ -1,0 +1,3 @@
+In Python you can create a variable and assign a value to it.
+In Python you can create a function and call it.
+In Python you can create a class and instantiate it.
