@@ -30,3 +30,18 @@ class Developer(Employee):
 developer: Developer = Developer("Hijabie", 21, "B.E In Physics", 700000)
 developer.job_intro("Generative A.I Developer")
 print(f"Developer name is {developer.name}")
+
+class MathOperations():
+    counter: int = 0
+    org: str = "P.I.A.I.C"
+    @staticmethod
+    def add(a: int, b: int) -> int:
+        return a + b
+    @staticmethod
+    def multiply(a: int, b: int) -> int:
+        return a * b
+
+res = MathOperations.add(8,9)
+print(res)
+print(MathOperations.multiply(5,6))
+print(MathOperations.org)
