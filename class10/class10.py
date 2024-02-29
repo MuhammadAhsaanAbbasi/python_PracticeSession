@@ -116,46 +116,46 @@ class User():
     def reset_login_attempts(self):
         self.login_attempts = 0
 
-user1: User = User("HIjabie", "Rabail Khan", 21)
-print(user1.login_attempts)
-user1.login_attempts = 2
-print(user1.login_attempts)
-user1.incremnet_login_attempts()
-print(user1.login_attempts)
-user1.reset_login_attempts()
-print(user1.login_attempts)
-user1.describe_user()
-user1.greet_user()
+# user1: User = User("HIjabie", "Rabail Khan", 21)
+# print(user1.login_attempts)
+# user1.login_attempts = 2
+# print(user1.login_attempts)
+# user1.incremnet_login_attempts()
+# print(user1.login_attempts)
+# user1.reset_login_attempts()
+# print(user1.login_attempts)
+# user1.describe_user()
+# user1.greet_user()
 
-class Admin(User):
-    def __init__(self, first_name: str, last_name: str, age: int, privileges: list[str]) -> None:
-        super().__init__(first_name, last_name, age)
-        self.privileges: list[str] = privileges
-    def add_privileges(self, privileges: str):
-        self.privileges.append(privileges)
-        self.privileges.append(privileges)
-    def show_privileges(self):
-        for privilege in self.privileges:
-            print(privilege)
+# class Admin(User):
+#     def __init__(self, first_name: str, last_name: str, age: int, privileges: list[str]) -> None:
+#         super().__init__(first_name, last_name, age)
+#         self.privileges: list[str] = privileges
+#     def add_privileges(self, privileges: str):
+#         self.privileges.append(privileges)
+#         self.privileges.append(privileges)
+#     def show_privileges(self):
+#         for privilege in self.privileges:
+#             print(privilege)
 
-admin: Admin = Admin("Hijabie", "Rabail Khan", 21, ["can add post"])
-print(admin.privileges)
-print(type(admin.privileges))
-admin.add_privileges("can delete post")
-admin.show_privileges()
+# admin: Admin = Admin("Hijabie", "Rabail Khan", 21, ["can add post"])
+# print(admin.privileges)
+# print(type(admin.privileges))
+# admin.add_privileges("can delete post")
+# admin.show_privileges()
 
-class Privileges(Admin):
-    def __init__(self, first_name: str, last_name: str, age: int, privileges: list[str]) -> None:
-        super().__init__(first_name, last_name, age, privileges)
-        self.privileges: list[str] = privileges
-    def add_privileges(self, privileges: str):
-        self.privileges.append(privileges)
+# class Privileges(Admin):
+#     def __init__(self, first_name: str, last_name: str, age: int, privileges: list[str]) -> None:
+#         super().__init__(first_name, last_name, age, privileges)
+#         self.privileges: list[str] = privileges
+#     def add_privileges(self, privileges: str):
+#         self.privileges.append(privileges)
 
-privileage: Privileges = Privileges("Hijabie", "Rabail Khan", 21, ["can add post"])
-print(privileage.privileges)
-print(type(privileage.privileges))
-privileage.add_privileges("can delete post")
-privileage.show_privileges()
+# privileage: Privileges = Privileges("Hijabie", "Rabail Khan", 21, ["can add post"])
+# print(privileage.privileges)
+# print(type(privileage.privileges))
+# privileage.add_privileges("can delete post")
+# privileage.show_privileges()
 
 from piaic.genai import SumValues
 
@@ -165,3 +165,35 @@ def square(numbers: int, num2: int) -> int:
 
 result = square(5, 7)
 print(result) 
+
+class User_login():
+    def __init__(self, user_info : dict[str,str] = {"abbasi":"1234"}):
+        self.__username = user_info
+    def __signup(self, user: str, password: str)->str:
+        if user not in self.__username.keys() and password not in self.__username.values():
+            self.__username[user] = password
+            return "User Created Successfully"
+        else:
+            return "User Already Exist"
+    def __login(self, user: str, password: str):
+        if user in self.__username.keys() and password in self.__username.values():
+            print("Login Successfully")
+            return "Valid User"
+        else:
+            return "Invalid User"
+    def login(self, user: str, password: str):
+        message = self.__login(user, password)
+        print(message)
+    def signup(self, user: str, password: str):
+        message: str = self.__signup(user, password)
+        print(message)
+    def display_infos(self) -> dict[str,str]:
+        return self.__username
+
+name: str = input("Enter User Name: ")
+password: str = input("Enter Password: ")
+user1: User_login = User_login()
+user1.signup(name, password)
+name2: str = input("Enter Login User Name: ")
+password2: str = input("Enter Login Password: ")
+user1.login(name2, password2)
