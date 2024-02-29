@@ -45,3 +45,23 @@ res = MathOperations.add(8,9)
 print(res)
 print(MathOperations.multiply(5,6))
 print(MathOperations.org)
+
+class Restaurant():
+    def __init__(self,restaurant_name,cuisine_type) -> None:
+        self.restaurant_name: str = restaurant_name
+        self.cuisine_type: str = cuisine_type
+    def describe_restaurant(self):
+        print(f"Restaurant Name: {self.restaurant_name} and Cuisine Type: {self.cuisine_type}")
+    def open_restaurant(self):
+        print(f"{self.restaurant_name} is open")
+
+restaurant: Restaurant = Restaurant("HRK Cuisine", "Pakistani, Indian")
+restaurant.describe_restaurant()
+restaurant.open_restaurant()
+
+restaurant1: Restaurant = Restaurant("HRK Cuisine", "Pakistani, Indian")
+restaurant1.describe_restaurant()
+restaurant2: Restaurant = Restaurant("Abbasi Cuisine", "Pakistani, Indian, Chinese")
+restaurant2.describe_restaurant()
+restaurant3: Restaurant = Restaurant("Al Nassar", "Pakistani, Indian, Chinese, Arabian")
+restaurant3.describe_restaurant()
