@@ -156,3 +156,12 @@ print(privileage.privileges)
 print(type(privileage.privileges))
 privileage.add_privileges("can delete post")
 privileage.show_privileges()
+
+from piaic.genai import SumValues
+
+@SumValues
+def square(numbers: int, num2: int) -> int:
+    return numbers * num2
+
+result = square(5, 7)
+print(result) 
