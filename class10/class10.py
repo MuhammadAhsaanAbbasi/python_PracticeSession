@@ -65,3 +65,38 @@ restaurant2: Restaurant = Restaurant("Abbasi Cuisine", "Pakistani, Indian, Chine
 restaurant2.describe_restaurant()
 restaurant3: Restaurant = Restaurant("Al Nassar", "Pakistani, Indian, Chinese, Arabian")
 restaurant3.describe_restaurant()
+
+from typing import Union, overload
+
+class Student():
+    def __init__(self, name: str, age: int, education: str, salary: int) -> None:
+        self.name: str = name
+        self.age: int = age
+        self.education: str = education
+        self.salary: int = salary
+    @overload
+    def calculate(self, a: int, b: int) -> int:
+        ...
+    @overload
+    def calculate(self, a: float, b: float) -> float:
+        ...
+    @overload
+    def calculate(self, a: str, b: str) -> str:
+        ...
+    def calculate(self, a: Union[int, float, str], b: Union[int, float, str]) -> Union[int, float, str]:
+        if isinstance(a, int) and isinstance(b, int):
+            return a + b
+        elif isinstance(a, float) and isinstance(b, float):
+            return a * b
+        elif isinstance(a, str) and isinstance(b, str):
+            return a + b
+        else:
+            raise TypeError("Invalid type")
+
+student1: Student = Student("Hijabie", 21, "B.E In Physics", 600000)
+result1 = student1.calculate(5,6)
+result2 = student1.calculate("Hijabie", "Abbasi")
+result3 = student1.calculate(5.0,6.0)
+print(result1)
+print(result2)
+print(result3)
