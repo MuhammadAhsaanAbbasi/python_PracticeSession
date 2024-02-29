@@ -100,3 +100,59 @@ result3 = student1.calculate(5.0,6.0)
 print(result1)
 print(result2)
 print(result3)
+
+class User():
+    def __init__(self,first_name: str, last_name: str, age: int) -> None:
+        self.first_name: str = first_name
+        self.last_name: str = last_name
+        self.age: int = age
+        self.login_attempts: int = 0
+    def describe_user(self):
+        print(f"First Name: {self.first_name}, Last Name: {self.last_name}, Age: {self.age}")
+    def greet_user(self):
+        print(f"Hello {self.first_name} {self.last_name}")
+    def incremnet_login_attempts(self):
+        self.login_attempts += 1
+    def reset_login_attempts(self):
+        self.login_attempts = 0
+
+user1: User = User("HIjabie", "Rabail Khan", 21)
+print(user1.login_attempts)
+user1.login_attempts = 2
+print(user1.login_attempts)
+user1.incremnet_login_attempts()
+print(user1.login_attempts)
+user1.reset_login_attempts()
+print(user1.login_attempts)
+user1.describe_user()
+user1.greet_user()
+
+class Admin(User):
+    def __init__(self, first_name: str, last_name: str, age: int, privileges: list[str]) -> None:
+        super().__init__(first_name, last_name, age)
+        self.privileges: list[str] = privileges
+    def add_privileges(self, privileges: str):
+        self.privileges.append(privileges)
+        self.privileges.append(privileges)
+    def show_privileges(self):
+        for privilege in self.privileges:
+            print(privilege)
+
+admin: Admin = Admin("Hijabie", "Rabail Khan", 21, ["can add post"])
+print(admin.privileges)
+print(type(admin.privileges))
+admin.add_privileges("can delete post")
+admin.show_privileges()
+
+class Privileges(Admin):
+    def __init__(self, first_name: str, last_name: str, age: int, privileges: list[str]) -> None:
+        super().__init__(first_name, last_name, age, privileges)
+        self.privileges: list[str] = privileges
+    def add_privileges(self, privileges: str):
+        self.privileges.append(privileges)
+
+privileage: Privileges = Privileges("Hijabie", "Rabail Khan", 21, ["can add post"])
+print(privileage.privileges)
+print(type(privileage.privileges))
+privileage.add_privileges("can delete post")
+privileage.show_privileges()
